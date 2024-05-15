@@ -1,5 +1,6 @@
 # String-to-Dictionary-ZeroMQ-
 
+```
 ## Using the Microservice
 
 ### Requesting Data
@@ -7,12 +8,23 @@
 To programmatically request data from the microservice, follow these steps:
 
 1. **Instantiate a ZeroMQ REQ socket**: In your client application, create a ZeroMQ REQ socket to connect to the microservice.
+   
+2. **Connect to the Microservice**: Connect the REQ socket to the microservice using the TCP transport protocol and the address `tcp://localhost:5555`.
 
-2. **Connect to the Microservice**: Connect the REQ socket to the microservice using the appropriate transport protocol and address (e.g., TCP or IPC).
+3. **Send Request**: Send a JSON-formatted request to the microservice. The request should contain the input string that you want to process.
 
-3. **Send Request**: Send a JSON-formatted request to the microservice, specifying the string data you want to process.
+4. **Receive Response**: Wait for and receive the response from the microservice. The response will contain the character and word frequencies of the input string.
 
-4. **Receive Response**: Wait for and receive the response from the microservice, which will contain the character and word frequencies of the input string.
+    - The response will be a JSON object containing two fields: `character_frequency` and `word_frequency`.
+    - `character_frequency` will contain a dictionary mapping each character in the input string to its frequency.
+    - `word_frequency` will contain a dictionary mapping each word in the input string to a dictionary of its character frequencies.
+    - Example response:
+    ```json
+    {
+        "character_frequency": {"H": 1, "e": 1, "l": 3, "o": 2, ",": 1, " ": 1, "w": 1, "r": 1, "d": 1, "!": 1},
+        "word_frequency": {"Hello,": {"H": 1, "e": 1, "l": 2, "o": 1, ",": 1}, "world!": {"w": 1, "o": 1, "r": 1, "l": 1, "d": 1, "!": 1}}
+    }
+    ```
 
 #### Example Call
 
@@ -34,3 +46,5 @@ def request_data(string):
 response = request_data("Hello, world!")
 print("Character Frequency:", response['character_frequency'])
 print("Word Frequency:", response['word_frequency'])
+```
+```
