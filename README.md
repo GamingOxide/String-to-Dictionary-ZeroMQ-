@@ -1,6 +1,5 @@
 # String-to-Dictionary-ZeroMQ-
 
-```
 ## Using the Microservice
 
 ### Requesting Data
@@ -46,5 +45,4 @@ def request_data(string):
 response = request_data("Hello, world!")
 print("Character Frequency:", response['character_frequency'])
 print("Word Frequency:", response['word_frequency'])
-```
-```
+
