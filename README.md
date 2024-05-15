@@ -46,3 +46,4 @@ response = request_data("Hello, world!")
 print("Character Frequency:", response['character_frequency'])
 print("Word Frequency:", response['word_frequency'])
 
+![Sequence diagram](https://github.com/GamingOxide/String-to-Dictionary-ZeroMQ-/assets/79893952/88e34a7f-4ba6-4689-9d87-7888de0e4094)
